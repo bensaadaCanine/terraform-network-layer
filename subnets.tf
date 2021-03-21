@@ -3,7 +3,7 @@ resource "aws_subnet" "private" {
   cidr_block = element(split(",", var.private_subnets), count.index)
   availability_zone = element(split(",", var.azs), count.index)
   count = length(compact(split(",", var.private_subnets)))
-  tags = { Name = var.environment-private }
+  tags = { Name = "${var.environment}-private" }
 }
 
 resource "aws_subnet" "public" {
@@ -11,7 +11,7 @@ resource "aws_subnet" "public" {
   cidr_block = element(split(",", var.public_subnets), count.index)
   availability_zone = element(split(",", var.azs), count.index)
   count = length(compact(split(",", var.public_subnets)))
-  tags = { Name = var.environment}-public }
+  tags = { Name = "${var.environment}-public" }
 
   map_public_ip_on_launch = true
 }
