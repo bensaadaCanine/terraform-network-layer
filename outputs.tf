@@ -10,14 +10,18 @@ output "admin_key_name" {
   value = aws_key_pair.admin_key.key_name
 }
 
+output "admin_pub_key" {
+  value = aws_key_pair.admin_key.public_key
+}
+
 output "private_subnets" {
-  value = [ aws_subnet.private.*.id ]
+  value = aws_subnet.private.*.id
 }
 
 output "public_subnets" {
-  value = [ aws_subnet.public.*.id ]
+  value = aws_subnet.public.*.id
 }
 
 output "vpc_id" {
-  value = "???"
+  value = aws_vpc.vpc.id
 }
